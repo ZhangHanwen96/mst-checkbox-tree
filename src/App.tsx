@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import { values } from "mobx";
 import store from "./models";
 import CheckboxView from "./components/CheckboxView/CheckboxView";
+import ExampleObserver from "./Example/SimpleObersevable";
 import "./App.css";
 
 interface Props {
@@ -11,11 +12,19 @@ interface Props {
 
 const App: FC<Props> = observer(({ store }) => {
 	return (
-		<ul>
-			{values(store.checkboxTree).map((item: any) => {
-				return <CheckboxView key={item.label} item={item} />;
-			})}
-		</ul>
+		<div>
+			<div>
+				<ul>
+					{values(store.checkboxTree).map((item: any) => {
+						return <CheckboxView key={item.label} item={item} />;
+					})}
+				</ul>
+			</div>
+			<div>
+				<h2>Simple observer implementation</h2>
+				<ExampleObserver />
+			</div>
+		</div>
 	);
 });
 export default App;
